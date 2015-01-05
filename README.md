@@ -2,29 +2,30 @@
 Together, we will be looking at how to build your very own chat app. In this tutorial, you will be using JavaScript, HTML, and CSS. Together we will be learning about WebSockets, GitHub, and hosting. 
 
 
-Installation:
-=============
-* NPM is a package manager for open source coding. What this means is that programmers can share their projects and code with the public via installable packages. For example. WebSockets, which we will be using to build our chat app.
+# Installation:
+* NPM is a package manager for open source coding. What this means is that programmers can share their projects and code with the public via installable packages. For example: WebSockets, which we will be using to build our chat app.
 * Using NPM and Node in the terminal, install WebSockets (ws):
     * run `npm init` in order to connect to NPM
     * Type `node npm install ws --save` and it should install.
-        * depending on system preferences, may need to use sudo command into terminal.
+        * depending on system preferences, may need to use `sudo` command in the terminal.
         * `ws` is the NPM WebSocket package name: `https://www.npmjs.com/package/ws`
         * `-- save` is used to permanently save the package to your computer. Therefore, you will not need to run `npm install` again.
 
-What are WebSockets?
-A WebSocket is an open interactive communication between a user's browser and a server.
-They allow for a client to send information to a server, that information gets processed by that server then sent out to a new client. Starting to sounds familiar? Maybe like a way to communicate or chat?
- Imagine a love triangle, minus the jealousy!
+### What are WebSockets?
+A WebSocket is an open interactive communication between a user's browser and a server. They allow for a client to send information to a server, that information gets processed by that server then sent out to a new client. Starting to sounds familiar? Maybe like a way to communicate or chat? Imagine a love triangle, minus the jealousy!  
+
 This is the package that we will be using in order to create our chat app. Think of this as the foundation. 
 
-Client-Server Architecture
-==========================
+# Setting up HTML/CSS
+* Before we get knee deep in code we have to set up a bare bones HTML file. The client side will depend on selecting parts of our HTML. If that doesn’t make sense, no worries, we will explain more below.
+* Within the body of your HTML file create separate 3 DIV elements, you’ll want to give them ID’s. DIVs should be for a send button, placeholder which will show the client’s input, and an area for displaying the text of the conversation. 
+
+
+# Client-Server Architecture
 Let’s think about this project before we fully delve in. What is a chat app? On the simplest level it is exactly what we explained above with WebSockets. A means for more than one client to connect to each other through a server. We are going to use the “ws” package we installed to build a program that can contain unlimited clients that connect to a server. We will walk you through step by step on how to write both sides. We will even give you some challenges for how to create special functions within your app. Ready to go?
 
 
-Client Side
-=========== 
+# Client Side 
 Double check to make sure all the right packages are installed before you start any actual coding. Revisit the “Installation” section for more information.
 
 We start by declaring a host which will connect us to the server. 
@@ -43,46 +44,47 @@ Create an event listener which will listen for when the page is open or connecte
         // Almost all of your code will go in here
     })
 
-Link your html elements to the javascript to utilize further. You can do this by using `document.querySelector`.
-What information are you storing about your client? Here we will be using *objects* to store multiple key/value pairs. Lets keep it simple and just transfer a name and text between the users.
+Link your html elements to the javascript to utilize further. You can do this by using `document.querySelector`.  
+
+What information are you storing about your client? Here we will be using *Objects* to store multiple key/value pairs. Let's keep it simple and just transfer a name and text between the users.
 
     var object = {
         name: name,
         text: yourInputBoxElement.value,
     }
 
-Since you cannot send objects the way they are formatted you must use JSON. JSON(JavaScript Object Notation) is a method of processing data between the server and the client. Because clients can only send data in the form of strings, JSON is able to break code down and represent it in the form of objects with key/value pairs, hashes or arrays.The two main commands for the sending and receiving of data through JSON are:
+Wait, we can’t send Objects the way they are formatted. So how do we send information? JSON. JSON (JavaScript Object Notation) is just a simple way to interchange data. Clients can only send data in the form of strings, JSON is able to break code down and represent it in the form of objects with key/value pairs, hashes or arrays. The two main commands for the sending and receiving of data through JSON are:
   
-Stringify
----------
-JSON.stringify(object), sending data
- this method alters objects from their original format so that they can be transmitted to and received by the server, this is 
- because clients can only send data in the form of strings, this method must be used
- once object has been stringified, it still must be sent to the server, using ws.send. !!!! necessary here?... or go to section on “Sending Information”
-Parse
------
-JSON.parse(objectReceived), receiving data
- once data is sent via the stringify method, the server uses the parse method to put the string of data back into its original form, in this instance, an object
- the parse method must be done on the server side
-For further clarification on the utilization of JSON please visit here: blah blah
+## Stringify
+`JSON.stringify(object)` for sending data.  
 
-Sending Information
--------------------
- create an event listener that will listen for an action such as clicking a submit button. When this event is triggered you will run a function that will include the “send” method.
+The stringify method alters objects into strings so that data can be transmitted and received. Again, clients can only send data in the form of strings that can be read by the server.  
+
+Once an object has been stringified it can be sent by the client to the server using ws.send (more on that later).
+
+## Parse
+`JSON.parse(objectReceived)` for receiving data.  
+
+The server has not received stringified data from the client, but now we need to send that data out to the next client as an object. We use the parse method to turn our string back into an object and send it out. And once the client receives the data, the whole process of stringify and parse starts over again. For further clarification on the utilization of JSON please visit here: blah blah
+
+## Sending Information
+
+create an event listener that will listen for an action such as clicking a submit button. When this event is triggered you will run a function that will include the “send” method.
 
     ws.send(userMessage)
 
- userMessage in this case will be the object that has been stringified. The values within the object will be the text that is grabbed from the input boxes at the moment the submit button is clicked.
+`userMessage` in this case will be the object that has been stringified. The values within the object will be the text that is grabbed from the input boxes at the moment the submit button is clicked.
+
 Receiving Information
 ---------------------
- The event listener in this scenario will be “message.” Whenever a message is received the client.js will run the function that you write in here.
+The event listener in this scenario will be “message.” Whenever a message is received the client.js will run the function that you write in here.
 
     ws.addEventListener(‘message’, function(){
         // What do you do with the received message?
     })
 
- The goal is to use stringify and parse in both your client and server JS files. This is because the server should be parsing and storing some of the information that is sent, such as keeping a history of the chat, to share to new users. The server should then stringify and send the information back out to the targeted clients. 
- You will need to parse the receiving message. Once parsed you can now determine what to do with the values in the object. 
+The goal is to use stringify and parse in both your client and server JS files. This is because the server should be parsing and storing some of the information that is sent, such as keeping a history of the chat, to share to new users. The server should then stringify and send the information back out to the targeted clients. 
+You will need to parse the receiving message. Once parsed you can now determine what to do with the values in the object. 
 Here you should create and append the elements that will hold the data.
 
     var parsedMessage = JSON.parse(receivingMessage);
