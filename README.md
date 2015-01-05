@@ -171,36 +171,36 @@ Committing to GitHub
 Testing out locally
 ===================
 When you believe your code will function it’s time to test it out.
-1. Launch a Terminal window, and run your server code: `node server_code.js`
-2. Now in a browser window, type in the address localhost:3000 (or the number of whatever port you designated).
-3. This should display your chat app. Type in a line or two of chat.
-4. Now open a second browser window and type in the same address. As you type in the two windows, all the chat text should be appearing in both. Check the Terminal window after each new action (client connection/disconnection, new feature test) to ascertain what action (if any) crashes the server.
-5. Open up more browser windows, using different browsers and devices. Verify that the chat continues to work.
-6. Close each connection and verify that the server is still running and that the remaining connections are open.
+1.  Launch a Terminal window, and run your server code: `node server_code.js`
+2.  Now in a browser window, type in the address localhost:3000 (or the number of whatever port you designated).
+3.  This should display your chat app. Type in a line or two of chat.
+4.  Now open a second browser window and type in the same address. As you type in the two windows, all the chat text should be appearing in both. Check the Terminal window after each new action (client connection/disconnection, new feature test) to ascertain what action (if any) crashes the server.
+5.  Open up more browser windows, using different browsers and devices. Verify that the chat continues to work.
+6.  Close each connection and verify that the server is still running and that the remaining connections are open.
 Now you’re ready to host the app on the Digital Ocean server.
 
 
 Hosting on the Web with Digital Ocean
 =====================================
- Digital Ocean, the server we will host the project on
- what you need: DO account info, password to DO account, ssh key to connect to your javascript server to the DO server, finalized/functional github repository 
- your laptop connects to the DO server through the ssh key
- run ssh key in the terminal
- inside finalized/functional github repository within terminal
- ssh to your DO domain
- git clone the https link from your Github repo. This automatically creates a folder for your repo, so you don’t need to make a folder for your code beforehand.
- cd into the cloned folder and npm install
+Digital Ocean, the server we will host the project on  
+what you need: DO account info, password to DO account, ssh key to connect to your javascript server to the DO server, finalized/functional github repository   
+your laptop connects to the DO server through the ssh key  
+run ssh key in the terminal  
+inside finalized/functional github repository within terminal  
+ssh to your DO domain  
+git clone the https link from your Github repo. This automatically creates a folder for your repo, so you don’t need to make a folder for your code beforehand.  
+cd into the cloned folder and npm install
 
 
- server is a hub to connect to
- things are not servers. programs are servers. laptops can be servers. any computer can be a server.
- a browser cannot be a server
- how a server is programmed coordinates how information is run back and forth bw the server and its other clients(users)
- meant for clients to connect to
- internet lets you connect to the server
- digital ocean will.princesspeach.nyc 3000
- currently in their server when put into terminal
- open port is 3000
- cannot use 3000 for another port
- but multiple people can open the port 3000
- port 80 is convention for the web
+server is a hub to connect to
+things are not servers. programs are servers. laptops can be servers. any computer can be a server.
+a browser cannot be a server
+how a server is programmed coordinates how information is run back and forth bw the server and its other clients(users)
+meant for clients to connect to
+internet lets you connect to the server
+digital ocean will.princesspeach.nyc 3000
+currently in their server when put into terminal
+open port is 3000
+cannot use 3000 for another port
+but multiple people can open the port 3000
+port 80 is convention for the web
