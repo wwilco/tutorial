@@ -1,19 +1,18 @@
-﻿What Is This Project?
-=====================
+﻿# What Is This Project?
 Together, we will be looking at how to build your very own chat app. In this tutorial, you will be using JavaScript, HTML, and CSS. Together we will be learning about WebSockets, GitHub, and hosting. 
 
 
 Installation:
 =============
-NPM is a package manager for open source coding. What this means is that programmers can share their projects and code with the public via installable packages. For example. WebSockets, which we will be using to build our chat app.
-Using NPM and Node in the terminal, install WebSockets (ws):
- run “npm init” in order to connect to NPM
- Type “node npm install ws --save” and it should install.
-depending on system preferences, may need to use sudo command into terminal.
-“ws” is the NPM WebSocket package name
- https://www.npmjs.com/package/ws
-“-- save” is used to permanently save the package to your computer. Therefore, you will not need to run “npm install” again.
- What are WebSockets?
+* NPM is a package manager for open source coding. What this means is that programmers can share their projects and code with the public via installable packages. For example. WebSockets, which we will be using to build our chat app.
+* Using NPM and Node in the terminal, install WebSockets (ws):
+    * run `npm init` in order to connect to NPM
+    * Type `node npm install ws --save` and it should install.
+        * depending on system preferences, may need to use sudo command into terminal.
+        * `ws` is the NPM WebSocket package name: `https://www.npmjs.com/package/ws`
+        * `-- save` is used to permanently save the package to your computer. Therefore, you will not need to run `npm install` again.
+
+What are WebSockets?
 A WebSocket is an open interactive communication between a user's browser and a server.
 They allow for a client to send information to a server, that information gets processed by that server then sent out to a new client. Starting to sounds familiar? Maybe like a way to communicate or chat?
  Imagine a love triangle, minus the jealousy!
